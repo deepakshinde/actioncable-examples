@@ -23,3 +23,6 @@ group :development do
   gem 'web-console', github: 'rails/web-console'
   gem 'spring'
 end
+
+gem 'react-rails'
+gem 'sprockets-es6'
