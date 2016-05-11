@@ -1,8 +1,9 @@
-var CommentList = React.createClass({
-  getInitialState(){
-    let message = JSON.parse(this.props.message);
-    return {message: message};
-  },
+class CommentList extends React.Component {
+  constructor(props) {
+    super(props);
+    let message = JSON.parse(props.message);
+    this.state = { message: message };
+  }
 
   render() {
     let comments = this.state.message.comments.map((comment) => {
@@ -12,33 +13,33 @@ var CommentList = React.createClass({
     return (
         <div>{comments}</div>
     );
-  },
+  }
 
-  renderComment(comment){
+  renderComment(comment) {
     return (
         <article key={comment.id}>
           <h3>Comment by { comment.user.name } </h3>
           <p>{ comment.content }</p>
         </article>
     );
-  },
+  }
 
-  componentDidMount(){
+  componentDidMount() {
     this.setupSubscription();
-  },
+  }
 
   updateCommentList(comment) {
     let message = JSON.parse(comment);
-    this.setState({message: message});
-  },
+    this.setState({ message: message });
+  }
 
-  setupSubscription(){
+  setupSubscription() {
 
     App.comments = App.cable.subscriptions.create("CommentsChannel", {
       message_id: this.state.message.id,
 
       connected: function () {
-        setTimeout(() => this.perform('follow', {message_id: this.message_id}), 1000);
+        setTimeout(() => this.perform('follow', { message_id: this.message_id }), 1000);
       },
 
       received: function (data) {
@@ -51,4 +52,4 @@ var CommentList = React.createClass({
 
   }
 
-});
+}

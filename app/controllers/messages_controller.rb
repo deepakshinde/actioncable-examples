@@ -4,6 +4,6 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message = Message.find(params[:id])
+    @message = Message.includes(:comments, comments: :user).find(params[:id])
   end
 end

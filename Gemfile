@@ -25,4 +25,3 @@ group :development do
 end
 
 gem 'react-rails'
-gem 'sprockets-es6'
