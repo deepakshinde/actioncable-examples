@@ -46,7 +46,7 @@ class CommentList extends React.Component {
         this.updateCommentList(data.comment);
       },
 
-      updateCommentList: this.updateCommentList
+      updateCommentList: this.updateCommentList.bind(this)
 
     });
 
