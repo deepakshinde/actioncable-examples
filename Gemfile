@@ -25,3 +25,5 @@ group :development do
 end
 
 gem 'react-rails'
+
+gem 'rack-cors', :require => 'rack/cors'
